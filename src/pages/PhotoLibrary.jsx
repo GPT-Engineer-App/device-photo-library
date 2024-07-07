@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, ModalContent, ModalTrigger } from "@/components/ui/modal";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -60,22 +60,25 @@ const PhotoLibrary = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredPhotos.map((photo) => (
           <Card key={photo.id} className="relative">
-            <Modal>
-              <ModalTrigger asChild>
+            <Dialog>
+              <DialogTrigger asChild>
                 <img
                   src={photo.src}
                   alt="placeholder"
                   className="mx-auto object-cover w-full h-[200px] cursor-pointer"
                 />
-              </ModalTrigger>
-              <ModalContent>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>{photo.category}</DialogTitle>
+                </DialogHeader>
                 <img
                   src={photo.src}
                   alt="placeholder"
                   className="mx-auto object-cover w-full h-[400px]"
                 />
-              </ModalContent>
-            </Modal>
+              </DialogContent>
+            </Dialog>
             <CardHeader>
               <CardTitle>{photo.category}</CardTitle>
             </CardHeader>
