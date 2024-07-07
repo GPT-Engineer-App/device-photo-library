@@ -35,14 +35,14 @@ const PhotoLibrary = () => {
       : photos.filter((photo) => photo.category === selectedCategory);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 text-gold">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">Photo Library</h1>
+        <h1 className="text-4xl font-serif text-gold">Photo Library</h1>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline">Filter by Category</Button>
+            <Button variant="outline" className="border-gold text-gold">Filter by Category</Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent className="bg-dark text-gold">
             <DropdownMenuItem onClick={() => filterPhotos("All")}>
               All
             </DropdownMenuItem>
@@ -59,7 +59,7 @@ const PhotoLibrary = () => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredPhotos.map((photo) => (
-          <Card key={photo.id} className="relative">
+          <Card key={photo.id} className="relative bg-dark border-gold">
             <Dialog>
               <DialogTrigger asChild>
                 <img
@@ -68,9 +68,9 @@ const PhotoLibrary = () => {
                   className="mx-auto object-cover w-full h-[200px] cursor-pointer"
                 />
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="bg-dark text-gold">
                 <DialogHeader>
-                  <DialogTitle>{photo.category}</DialogTitle>
+                  <DialogTitle className="font-serif">{photo.category}</DialogTitle>
                 </DialogHeader>
                 <img
                   src={photo.src}
@@ -80,16 +80,16 @@ const PhotoLibrary = () => {
               </DialogContent>
             </Dialog>
             <CardHeader>
-              <CardTitle>{photo.category}</CardTitle>
+              <CardTitle className="font-serif text-gold">{photo.category}</CardTitle>
             </CardHeader>
             <CardContent>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" className="border-gold text-gold">
                     Assign Category
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent className="bg-dark text-gold">
                   {categories.map((category) => (
                     <DropdownMenuItem
                       key={category}
